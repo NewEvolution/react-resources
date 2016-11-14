@@ -22,7 +22,31 @@ class Hello extends React.Component {
   }
 }
 ```
-### Props
+
+## Rendering
+In React, the components build the view, but need a way to be attached to the DOM.  This is accomplished with the `ReactDOM.render` function.  You'll generally only have one of these for your page, and it takes as arguments the React component to render, and the DOM element to render it to:
+```javascript
+class HelloHolder extends React.Component {
+  render() {
+    return(
+      <Hello World! />
+    )
+  }
+}
+
+ReactDOM.render(<HelloHolder />, document.getElementById('content'));
+```
+```html
+<head>
+  <title>React Basics</title>
+</head>
+<body>
+  <div id="content">
+    <!-- replaced by React -->
+  </div>
+</body>
+```
+## Props
 
 Components can contain other components and pass information into them as `props`.
 ```javascript
@@ -40,7 +64,7 @@ class TileHolder extends React.Component {
   }
 }
 ```
-### State
+## State
 
 Components have an internal data storage object called `state`.  Changes to the `state` cause a re-render of the page, and those changes can be passed down to child components via their `props`.
 ```javascript
@@ -106,40 +130,4 @@ class TileHolder extends React.Component{
     )
   }
 }
-```
-
-## Rendering
-Up to this point we've been looking at components, but have no way to actually attach those components to the DOM.  In React this is accomplished with the `ReactDOM.render` function.  You'll generally only have one of these for your page, and it takes as arguments the React component to render, and the DOM element to render it to:
-```html
-<head>
-  <title>React Basics</title>
-</head>
-<body>
-  <div id="content">
-    <!-- replaced by React -->
-  </div>
-</body>
-```
-```javascript
-function Hello(props) {
-  return (
-    <h1>Hello {props.name}!</h1>
-  )
-}
-
-class HelloHolder extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      name: 'World'
-    }
-  }
-  render() {
-    return(
-      <Hello name={this.state.name} />
-    )
-  }
-}
-
-ReactDOM.render(<HelloHolder />, document.getElementById('content'));
 ```
