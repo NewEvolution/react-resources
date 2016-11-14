@@ -109,3 +109,37 @@ class TileHolder extends React.Component{
 ```
 
 ## Rendering
+Up to this point we've been looking at components, but have no way to actually attach those components to the DOM.  In React this is accomplished with the `ReactDOM.render` function.  You'll generally only have one of these for your page, and it takes as arguments the React component to render, and the DOM element to render it to:
+```html
+<head>
+  <title>React Basics</title>
+</head>
+<body>
+  <div id="content">
+    <!-- replaced by React -->
+  </div>
+</body>
+```
+```javascript
+function Hello(props) {
+  return (
+    <h1>Hello {props.name}!</h1>
+  )
+}
+
+class HelloHolder extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: 'World'
+    }
+  }
+  render() {
+    return(
+      <Hello name={this.state.name} />
+    )
+  }
+}
+
+ReactDOM.render(<HelloHolder />, document.getElementById('content'));
+```
