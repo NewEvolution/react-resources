@@ -12,7 +12,7 @@ function Hello() {
 }
 ```
 
-And more complex ones can be written in class syntax.  They _must_ have a `render` function which returns what they render to the DOM:
+More complex components can be written in class syntax.  They _must_ have a `render` function which returns what they render to the DOM:
 ```javascript
 class Hello extends React.Component {
   render() {
@@ -22,6 +22,34 @@ class Hello extends React.Component {
   }
 }
 ```
+
+## JSX
+
+
+
+React is generally written in JSX, short for JavaScript [XML](https://en.wikipedia.org/wiki/XML).  React can be written as plain JavaScript, but JSX's syntax and structure is generally more intutive and easier to follow. Before runtime the JSX is [transpiled](https://en.wikipedia.org/wiki/Source-to-source_compiler) into JavaScript that can be uderstood by the browser.
+
+The X part of JSX comes into play within the return value of function-style components, and within the return value of the render function of class-style components.  Though you may not have written much XML, with JSX there's not a huge difference from the HTML you're used to writing.
+
+One caveat is that in XML all tags must be explicitly closed.  For self-closing tags like `<input>` and `<img>`, the tag must have the closing slash included i.e. `<input />` `<img />`.  HTML tags render into the DOM as you would expect.  Components defined in your scripts can be included in other components by treating their function/class names as XML tags.  Here the `Hello` component is included within the `HelloHolder` component:
+```javascript
+function Hello() {
+  return (
+    <h2>Hello World!</h2>
+  )
+}
+
+function HelloHolder() {
+  return(
+    <div>
+      <h1>Welcome Developers</h1>
+      <Hello />
+    </div>
+  )
+}
+```
+
+
 
 ## Rendering
 In React, the components build the view, but need a way to be attached to the DOM.  This is accomplished with the `ReactDOM.render` function.  You'll generally only have one of these for your page, and it takes as arguments the React component to render, and the DOM element to render it to:
