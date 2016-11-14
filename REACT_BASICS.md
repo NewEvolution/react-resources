@@ -25,8 +25,6 @@ class Hello extends React.Component {
 
 ## JSX
 
-
-
 React is generally written in JSX, short for JavaScript [XML](https://en.wikipedia.org/wiki/XML).  React can be written as plain JavaScript, but JSX's syntax and structure is generally more intutive and easier to follow. Before runtime the JSX is [transpiled](https://en.wikipedia.org/wiki/Source-to-source_compiler) into JavaScript that can be uderstood by the browser.
 
 The X part of JSX comes into play within the return value of function-style components, and within the return value of the render function of class-style components.  Though you may not have written much XML, with JSX there's not a huge difference from the HTML you're used to writing.
