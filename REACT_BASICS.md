@@ -22,7 +22,7 @@ class Hello extends React.Component {
   }
 }
 ```
-## Props
+### Props
 
 Components can contain other components and pass information into them as `props`.
 ```javascript
@@ -40,7 +40,7 @@ class TileHolder extends React.Component {
   }
 }
 ```
-## State
+### State
 
 Components have an internal data storage object called `state`.  Changes to the `state` cause a re-render of the page, and those changes can be passed down to child components via their `props`.
 ```javascript
@@ -108,4 +108,4 @@ class TileHolder extends React.Component{
 }
 ```
 
-
+## Rendering
