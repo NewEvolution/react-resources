@@ -1,5 +1,7 @@
 # React Basics
 
+Before starting, it's good to get a grasp of what React is and isn't.  React is _only_ the V in MVC.  It's a modular component-driven way to get dynamic data into the DOM, and does not concern itself with where that data comes from, or how it got there.
+
 ## Components
 
 React is made up of units called components. Simple components can be written in function syntax.  They just return what they render to the DOM:
@@ -157,3 +159,8 @@ class TileHolder extends React.Component{
   }
 }
 ```
+
+### Further Reading
+
+- [React's Official Tutorial](https://facebook.github.io/react/tutorial/tutorial.html) - A simple tic-tac-toe game utilizing state, props & components.
+- [Tyler McGinnis' React Tutorial](https://tylermcginnis.com/react-js-tutorial-pt-1-a-comprehensive-guide-to-building-apps-with-react-js-8ce321b125ba#.8njkv6hwm) - In-depth exploration of React's place in the web development pantheon & the inner workings of data flow through React components.
