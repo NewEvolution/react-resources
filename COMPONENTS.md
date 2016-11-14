@@ -2,7 +2,7 @@
 
 React is made up of units called components. Simple components can be written in function syntax:
 
-```xml
+```javascript
 function Hello(props) {
   return(
     <h1>Hello World!</h1>
@@ -11,7 +11,7 @@ function Hello(props) {
 ```
 
 And more complex ones can be written in class syntax:
-```xml
+```javascript
 class StateHello extends React.Component{
   constructor() {
     super();
@@ -28,7 +28,7 @@ class StateHello extends React.Component{
 ```
 
 Components can contain other components and pass information into them as props.
-```xml
+```javascript
 function HelloTile(props) {
   return(
     <h1>Hello {props.name}!</h1>
