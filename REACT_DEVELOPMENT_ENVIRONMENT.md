@@ -88,3 +88,6 @@ packed.js  1.62 kB       0  [emitted]  main
 ```
 
 If you then look in the `dist` folder, there should be a `packed.js` file.  The file itself is all of React (brought in by the `require('react')` statement) along with the simple component we wrote which was transpiled from JSX to JavaScript.
+
+## Script Injection
+Since we're already using webpack for transpiling and aggregating our JS, we can take advantage of `html-webpack-plugin` to automatically inject our packed code into our HTML.  First step is installing the npm modules:
