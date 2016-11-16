@@ -10,7 +10,7 @@ React is made up of units called components. Simple components can be written in
 function Hello() {
   return(
     <h1>Hello World!</h1>
-  )
+  );
 }
 ```
 
@@ -20,7 +20,7 @@ class Hello extends React.Component {
   render() {
     return(
       <h1>Hello World!</h1>
-    )
+    );
   }
 }
 ```
@@ -36,7 +36,7 @@ One caveat is that in XML all tags must be explicitly closed.  For self-closing 
 function Hello() {
   return (
     <h2>Hello World!</h2>
-  )
+  );
 }
 
 function HelloHolder() {
@@ -45,11 +45,9 @@ function HelloHolder() {
       <h1>Welcome Developers</h1>
       <Hello />
     </div>
-  )
+  );
 }
 ```
-
-
 
 ## Rendering
 In React, the components build the view, but need a way to be attached to the DOM.  This is accomplished with the `ReactDOM.render` function.  You'll generally only have one of these for your page, and it takes as arguments the React component to render, and the DOM element to render it to:
@@ -58,7 +56,7 @@ class HelloHolder extends React.Component {
   render() {
     return(
       <Hello World! />
-    )
+    );
   }
 }
 
@@ -81,14 +79,14 @@ Components can contain other components and pass information into them as `props
 function HelloTile(props) {
   return(
     <h1>Hello {props.name}!</h1>
-  )
+  );
 }
 
 class TileHolder extends React.Component {
   render() {
     return(
       <HelloTile name={'World'} />
-    )
+    );
   }
 }
 ```
@@ -99,7 +97,7 @@ Components have an internal data storage object called `state`.  Changes to the 
 function HelloTile(props) {
   return(
     <h1>Hello {props.name}!</h1>
-  )
+  );
 }
 
 class TileHolder extends React.Component {
@@ -107,12 +105,12 @@ class TileHolder extends React.Component {
     super();
     this.state = {
       name: 'World'
-    }
+    };
   }
   render() {
     return(
       <HelloTile name={this.state.name} />
-    )
+    );
   }
 }
 ```
@@ -124,7 +122,7 @@ Components should only ever modify _their own_ state directly.  Children should 
 function HelloTile(props) {
   return(
     <h1>Hello {props.name}!</h1>
-  )
+  );
 }
 
 function NameInput(props) {
@@ -134,7 +132,7 @@ function NameInput(props) {
       onChange={e => props.changeName(e)}
       placeholder='World'
     />
-  )
+  );
 }
 
 class TileHolder extends React.Component{
@@ -142,20 +140,54 @@ class TileHolder extends React.Component{
     super();
     this.state = {
       name: 'World'
-    }
+    };
   }
   changeName(e) {
     this.setState({
       name: e.target.value
-    })
+    });
   }
   render() {
     return(
       <div>
         <HelloTile name={this.state.name} />
-        <NameInput changeName={e => this.changeName(e)}
+        <NameInput changeName={e => this.changeName(e)} />
       </div>
-    )
+    );
+  }
+}
+```
+
+Lets step it up a notch and bind `this` to our function to eliminate the repeated lambdas, use destructuring to clean up our props, and turn our simple components into lambda functions.
+```javascript
+const HelloTile = ({name}) => <h1>Hello {name}!</h1>,
+      NameInput = ({changeName}) =>
+        <input
+          type='text'
+          onChange={e => changeName(e)}
+          placeholder='World'
+        />;
+
+class TileHolder extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: 'World'
+    };
+    this.changeName = this.changeName.bind(this);
+  }
+  changeName(e) {
+    this.setState({
+      name: e.target.value
+    });
+  }
+  render() {
+    return(
+      <div>
+        <HelloTile name={this.state.name} />
+        <NameInput changeName={this.changeName} />
+      </div>
+    );
   }
 }
 ```
