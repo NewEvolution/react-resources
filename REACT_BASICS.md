@@ -158,6 +158,7 @@ class TileHolder extends React.Component{
 }
 ```
 
+## ES6 Powerup
 Lets step it up a notch and bind `this` to our function to eliminate the repeated lambdas, use destructuring to clean up our props, and turn our simple components into lambda functions.
 ```javascript
 const HelloTile = ({name}) => <h1>Hello {name}!</h1>,
